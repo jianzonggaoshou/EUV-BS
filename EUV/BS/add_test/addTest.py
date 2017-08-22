@@ -2,12 +2,11 @@
 import unittest
 from selenium import webdriver
 from time import sleep
-import time
 
 
 class AddTest(unittest.TestCase):
     # 变量赋值
-    a = 'test101'
+    a = 'test105'
     username = u'xuzhen' + a
     role = u'角色' + a
     depart = u'部门' + a
@@ -139,7 +138,8 @@ class AddTest(unittest.TestCase):
             '/html/body/div/index-header/div/div[2]/div[2]/nav2-content/div[2]/div/form/div[2]/select/option[2]').click()
         # 备注
         self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav2-content/div[2]/div/form/div[3]/textarea').send_keys(u'部门test')
+            '/html/body/div/index-header/div/div[2]/div[2]/nav2-content/div[2]/div/form/div[3]/textarea').send_keys(
+            u'部门test')
         # 确定
         self.browser.find_element_by_xpath('//*[@id="footer"]/button[1]').click()
         # *******************************建立DOM树二级***********************************
@@ -152,7 +152,8 @@ class AddTest(unittest.TestCase):
         # 部门名称
         sleep(3)
         self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav2-content/div[2]/div/form/div[1]/input').send_keys(AddTest.group)
+            '/html/body/div/index-header/div/div[2]/div[2]/nav2-content/div[2]/div/form/div[1]/input').send_keys(
+            AddTest.group)
         # 部门类型
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav2-content/div[2]/div/form/div[2]/select').click()
@@ -220,7 +221,8 @@ class AddTest(unittest.TestCase):
         sleep(3)
         # 新增
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/p/button').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/p/button').click()
         # 表单
         # ***********************定性*************************
         sleep(2)
@@ -243,7 +245,8 @@ class AddTest(unittest.TestCase):
         # ***********************定量*************************
         # 新增
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/p/button').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/p/button').click()
         sleep(2)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[2]/div/p[2]/input').send_keys(u'检测项定量test')
@@ -264,7 +267,8 @@ class AddTest(unittest.TestCase):
         # ********************拍照******************
         # 新增
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/p/button').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/p/button').click()
         sleep(2)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[2]/div/p[2]/input').send_keys(u'检测项拍照test')
@@ -276,14 +280,16 @@ class AddTest(unittest.TestCase):
 
         # ********************模板管理新增******************
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/span[2]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/span[2]').click()
         # 新增
         sleep(1)
         self.browser.find_element_by_id('sten-new').click()
         # 表单
         self.browser.find_element_by_id('name').send_keys(u'设备test模板')
         self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[4]/div/form/div[2]/textarea').send_keys(u'test')
+            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[4]/div/form/div[2]/textarea').send_keys(
+            u'test')
         # 确定
         self.browser.find_element_by_id('sten-save').click()
 
@@ -391,53 +397,63 @@ class AddTest(unittest.TestCase):
         sleep(1)
         # 新增
         sleep(2)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/plan-table/div[1]/p/button').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/plan-table/div[1]/p/button').click()
         # 表单
         sleep(1)
         # 计划名称
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div/div/div[1]/input').send_keys(
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[1]/input').send_keys(
             AddTest.plan)
         # 周期类型
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div/div/div[2]/select').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[2]/select').click()
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div/div/div[2]/select/option[2]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[2]/select/option[2]').click()
         # 开始时间
         # 时
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div/div/div[3]/select[1]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[3]/select[1]').click()
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[3]/select[1]/option[10]').click()
         # 分
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div/div/div[3]/select[2]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[3]/select[2]').click()
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[3]/select[2]/option[2]').click()
         # 秒
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div/div/div[3]/select[3]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[3]/select[3]').click()
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[3]/select[3]/option[2]').click()
         # 结束时间
         # 时
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div/div/div[4]/select[1]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[4]/select[1]').click()
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[4]/select[1]/option[19]').click()
         # 分
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div/div/div[4]/select[2]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[4]/select[2]').click()
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[4]/select[2]/option[2]').click()
         # 秒
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div/div/div[4]/select[3]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[4]/select[3]').click()
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[4]/select[3]/option[2]').click()
@@ -457,13 +473,16 @@ class AddTest(unittest.TestCase):
 
         # 选择安全包
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div/div/div[7]/select').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[7]/select').click()
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div/div/div[7]/select/option[3]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[7]/select/option[2]').click()
 
         # 计划描述
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div/div/div[8]/textarea').send_keys(
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[8]/textarea').send_keys(
             u'日计划测试test')
 
         # 选择设备
@@ -474,7 +493,8 @@ class AddTest(unittest.TestCase):
 
         # 选择模板
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div/div/div[9]/div[2]/span/select').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[9]/div[2]/span/select').click()
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[9]/div[2]/span/select/option[2]').click()
@@ -504,7 +524,8 @@ class AddTest(unittest.TestCase):
         sleep(1)
         # 任务名称
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[1]/input').send_keys(
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[1]/input').send_keys(
             AddTest.task)
         # 执行班组
         sleep(1)
@@ -514,30 +535,37 @@ class AddTest(unittest.TestCase):
         self.browser.find_element_by_link_text('运行一班').click()
         # 选择安全包
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/select').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/select').click()
         sleep(1)
         self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/select/option[3]').click()
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/select/option[2]').click()
 
         # 开始时间
         sleep(1)
         self.browser.find_element_by_id('startDateTime').click()
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr[1]/td[3]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr[1]/td[3]').click()
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr/td/span[2]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr/td/span[2]').click()
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr/td/span[1]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr/td/span[1]').click()
 
         # 结束时间
         sleep(1)
         self.browser.find_element_by_id('endDateTime').click()
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr[1]/td[3]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr[1]/td[3]').click()
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr/td/span[2]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr/td/span[2]').click()
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr/td/span[1]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr/td/span[1]').click()
 
         # 选择设备
         sleep(1)
@@ -546,7 +574,8 @@ class AddTest(unittest.TestCase):
         self.browser.find_element_by_xpath('//*[@id="tree-root"]/ol/li/ol/li[1]/ol/li[1]/div/span').click()
         # 选择模板
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[4]/div[2]/span/select').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[4]/div[2]/span/select').click()
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[4]/div[2]/span/select/option[2]').click()
@@ -572,7 +601,8 @@ class AddTest(unittest.TestCase):
         # 表单
         # 安全包详情
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/form/div[1]/input').send_keys(
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/form/div[1]/input').send_keys(
             AddTest.safe_bag)
         sleep(1)
         self.browser.find_element_by_xpath(
@@ -590,12 +620,14 @@ class AddTest(unittest.TestCase):
 
         # 页名
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div[1]/index-header/div/div[2]/div[2]/div[2]/div/div[1]/input').send_keys(
+        self.browser.find_element_by_xpath(
+            '/html/body/div[1]/index-header/div/div[2]/div[2]/div[2]/div/div[1]/input').send_keys(
             u'第一页')
 
         # 页码
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div[1]/index-header/div/div[2]/div[2]/div[2]/div/div[2]/input').send_keys(
+        self.browser.find_element_by_xpath(
+            '/html/body/div[1]/index-header/div/div[2]/div[2]/div[2]/div/div[2]/input').send_keys(
             '1')
 
         sleep(1)
@@ -616,4 +648,4 @@ class AddTest(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    testUnit = unittest.main()
