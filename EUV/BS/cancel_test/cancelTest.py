@@ -31,7 +31,7 @@ class CancelTest(unittest.TestCase):
         sleep(10)
         self.browser.quit()
 
-    @unittest.skip("直接跳过测试test1_userCancel")
+    # @unittest.skip("直接跳过测试test1_userCancel")
     def test1_userCancel(self):
         # 滚动翻页
         js = "window.scrollTo(0, 500)"
@@ -52,7 +52,7 @@ class CancelTest(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_id('ensure').click()
 
-    @unittest.skip("直接跳过测试test2_roleCancel")
+    # @unittest.skip("直接跳过测试test2_roleCancel")
     def test2_roleCancel(self):
         # 滚动翻页
         js = "window.scrollTo(0, 500)"
@@ -74,7 +74,7 @@ class CancelTest(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_id('ensure').click()
 
-    @unittest.skip("直接跳过测试test3_departCancel")
+    # @unittest.skip("直接跳过测试test3_departCancel")
     def test3_departCancel(self):
         # 滚动翻页
         js = "window.scrollTo(0, 500)"
@@ -107,7 +107,7 @@ class CancelTest(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_id('ensure').click()
 
-    @unittest.skip("直接跳过测试test4_detectionBuild")
+    # @unittest.skip("直接跳过测试test4_detectionBuild")
     def test4_detectionBuild(self):
         # *******************创建设备***********************
         # 资源管理
@@ -145,7 +145,7 @@ class CancelTest(unittest.TestCase):
         self.browser.find_element_by_xpath(
             '/html/body/div[1]/index-header/div/div[2]/div[2]/nav5-content/div[7]/div/div/div[3]/button[1]').click()
 
-    @unittest.skip("直接跳过测试test5_equipmentTypeCancel")
+    # @unittest.skip("直接跳过测试test5_equipmentTypeCancel")
     def test5_equipmentTypeCancel(self):
         # 滚动翻页
         js = "window.scrollTo(0, 500)"
@@ -167,7 +167,7 @@ class CancelTest(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_id('ensure').click()
 
-    @unittest.skip("直接跳过测试test6_equipmentCancel")
+    # @unittest.skip("直接跳过测试test6_equipmentCancel")
     def test6_equipmentCancel(self):
         # *******************新增配电室***********************
         # 资源管理
