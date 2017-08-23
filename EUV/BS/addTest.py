@@ -6,8 +6,8 @@ from time import sleep
 
 class AddTest(unittest.TestCase):
     # 变量赋值
-    a = 'test105'
-    username = u'xuzhen' + a
+    a = 'test'
+    username = u'test' + a
     role = u'角色' + a
     depart = u'部门' + a
     group = u'班组test' + a
