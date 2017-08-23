@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import unittest
-from time import sleep
 import MySQLdb
 
 
