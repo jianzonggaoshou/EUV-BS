@@ -39,7 +39,7 @@ class BSCancelTest(unittest.TestCase):
         # 删除第4个item
         sleep(1)
         self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[1]/table/tbody/tr[4]/td[7]/button[2]').click()
+            '/html/body/div[1]/index-header/div/div[2]/div[2]/div[1]/table/tbody/tr[2]/td[7]/button[3]').click()
         # 确定弹出框
         sleep(1)
         self.browser.find_element_by_id('ensure').click()
