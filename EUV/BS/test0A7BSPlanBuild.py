@@ -4,8 +4,8 @@ from selenium import webdriver
 from time import sleep
 
 
-class BSAddTest(unittest.TestCase):
-    """BS端增加测试"""
+class BSPlanBuild(unittest.TestCase):
+    """BS端增加计划"""
     # 变量赋值
     a = 'test'
     plan = u'日计划测试' + a
@@ -49,7 +49,7 @@ class BSAddTest(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div/div/div[1]/input').send_keys(
-            BSAddTest.plan)
+            BSPlanBuild.plan)
         # 周期类型
         sleep(1)
         self.browser.find_element_by_xpath(

@@ -4,8 +4,8 @@ from selenium import webdriver
 from time import sleep
 
 
-class BSAddTest(unittest.TestCase):
-    """BS端增加测试"""
+class BSTaskBuild(unittest.TestCase):
+    """BS端增加任务"""
     # 变量赋值
     a = 'test'
     task = u'特检任务' + a
@@ -48,7 +48,7 @@ class BSAddTest(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[1]/input').send_keys(
-            BSAddTest.task)
+            BSTaskBuild.task)
         # 执行班组
         sleep(1)
         self.browser.find_element_by_xpath(

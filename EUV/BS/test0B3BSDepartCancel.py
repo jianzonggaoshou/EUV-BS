@@ -4,8 +4,8 @@ from selenium import webdriver
 from time import sleep
 
 
-class BSCancelTest(unittest.TestCase):
-    """BS端删除测试"""
+class BSDepartCancel(unittest.TestCase):
+    """BS端删除部门班组"""
     def setUp(self):
         print("test3 case start"),
         self.browser = webdriver.Chrome()

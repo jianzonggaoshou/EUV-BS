@@ -4,8 +4,8 @@ from selenium import webdriver
 from time import sleep
 
 
-class BSAddTest(unittest.TestCase):
-    """BS端增加测试"""
+class BSUserBuild(unittest.TestCase):
+    """BS端增加用户"""
     # 变量赋值
     a = 'test'
     username = u'test' + a
@@ -51,7 +51,7 @@ class BSAddTest(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_id('button2').click()
         # 表单
-        self.browser.find_elements_by_xpath('//*[@id="name"]')[0].send_keys(BSAddTest.username)
+        self.browser.find_elements_by_xpath('//*[@id="name"]')[0].send_keys(BSUserBuild.username)
         self.browser.find_elements_by_xpath('//*[@id="name"]')[1].send_keys(u'许臻')
         self.browser.find_elements_by_xpath('//*[@id="name"]')[2].send_keys('123456')
         self.browser.find_elements_by_xpath('//*[@id="name"]')[3].send_keys('123456')

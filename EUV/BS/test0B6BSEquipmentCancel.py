@@ -4,8 +4,8 @@ from selenium import webdriver
 from time import sleep
 
 
-class BSCancelTest(unittest.TestCase):
-    """BS端删除测试"""
+class BSEquipmentCancel(unittest.TestCase):
+    """BS端删除台账"""
 
     def setUp(self):
         print("test6 case start"),

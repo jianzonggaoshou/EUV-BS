@@ -4,8 +4,8 @@ from selenium import webdriver
 from time import sleep
 
 
-class BSAddTest(unittest.TestCase):
-    """BS端增加测试"""
+class BSDepartBuild(unittest.TestCase):
+    """BS端增加部门班组"""
     # 变量赋值
     a = 'test'
     depart = u'部门' + a
@@ -81,7 +81,7 @@ class BSAddTest(unittest.TestCase):
         sleep(3)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav2-content/div[2]/div/form/div[1]/input').send_keys(
-            BSAddTest.group)
+            BSDepartBuild.group)
         # 部门类型
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav2-content/div[2]/div/form/div[2]/select').click()

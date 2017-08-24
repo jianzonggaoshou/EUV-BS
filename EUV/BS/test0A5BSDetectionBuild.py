@@ -4,11 +4,8 @@ from selenium import webdriver
 from time import sleep
 
 
-class BSAddTest(unittest.TestCase):
-    """BS端增加测试"""
-    # 变量赋值
-    a = 'test'
-    equipment_type = u'设备类型' + a
+class BSDetectionBuild(unittest.TestCase):
+    """BS端增加检测项"""
 
     def setUp(self):
         print("test5 case start"),

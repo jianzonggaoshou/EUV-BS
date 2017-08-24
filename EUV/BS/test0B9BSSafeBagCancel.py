@@ -4,8 +4,8 @@ from selenium import webdriver
 from time import sleep
 
 
-class BSCancelTest(unittest.TestCase):
-    """BS端删除测试"""
+class BSSafeBagCancel(unittest.TestCase):
+    """BS端删除安全包"""
 
     def setUp(self):
         print("test9 case start"),
@@ -31,7 +31,7 @@ class BSCancelTest(unittest.TestCase):
         sleep(10)
         self.browser.quit()
 
-    def test9_safeBagCancel(self):
+    def test9_BSSafeBagCancel(self):
         """BS端删除安全包"""
         # 安全包管理
         self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[1]/div/div[9]/div[1]/i').click()

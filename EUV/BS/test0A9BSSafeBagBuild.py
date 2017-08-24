@@ -4,8 +4,8 @@ from selenium import webdriver
 from time import sleep
 
 
-class BSAddTest(unittest.TestCase):
-    """BS端增加测试"""
+class BSSafeBagBuild(unittest.TestCase):
+    """BS端增加安全包"""
     # 变量赋值
     a = 'test'
     safe_bag = u'安全包' + a
@@ -47,7 +47,7 @@ class BSAddTest(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/form/div[1]/input').send_keys(
-            BSAddTest.safe_bag)
+            BSSafeBagBuild.safe_bag)
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/form/div[2]/textarea').send_keys(u'安全包test')

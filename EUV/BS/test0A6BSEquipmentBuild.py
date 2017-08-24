@@ -4,8 +4,8 @@ from selenium import webdriver
 from time import sleep
 
 
-class BSAddTest(unittest.TestCase):
-    """BS端增加测试"""
+class BSEquipmentBuild(unittest.TestCase):
+    """BS端增加台账"""
     # 变量赋值
     a = 'test'
     room = u'配电室' + a
@@ -55,7 +55,7 @@ class BSAddTest(unittest.TestCase):
         sleep(2)
         self.browser.find_element_by_id('newRoom').click()
         sleep(1)
-        self.browser.find_element_by_id('roomName').send_keys(BSAddTest.room)
+        self.browser.find_element_by_id('roomName').send_keys(BSEquipmentBuild.room)
         self.browser.find_element_by_id('roomRemark').send_keys(u'配电室test')
         # 确定
         self.browser.find_element_by_id('newR-save').click()
@@ -66,7 +66,7 @@ class BSAddTest(unittest.TestCase):
         # 表单
         # 设备名称
         sleep(1)
-        self.browser.find_element_by_id('equipmentName').send_keys(BSAddTest.transformer)
+        self.browser.find_element_by_id('equipmentName').send_keys(BSEquipmentBuild.transformer)
         # 设备类型
         sleep(1)
         self.browser.find_element_by_id('equipmentTypeId').click()
@@ -105,7 +105,3 @@ class BSAddTest(unittest.TestCase):
         # 确定
         sleep(1)
         self.browser.find_element_by_id('newE-save').click()
-        # # 截图
-        # sleep(3)
-        # now = time.strftime('%y-%m-%d-%H:%M:%S')
-        # self.browser.get_screenshot_as_file('/Users/xuzhen/PycharmProjects/QA2017/EUV/BS/image/台账管理%s.jpg' % now)

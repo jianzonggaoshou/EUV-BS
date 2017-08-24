@@ -4,8 +4,8 @@ from selenium import webdriver
 from time import sleep
 
 
-class BSAddTest(unittest.TestCase):
-    """BS端增加测试"""
+class BSEquipmentTypeBuild(unittest.TestCase):
+    """BS端增加设备类型"""
     # 变量赋值
     a = 'test'
     equipment_type = u'设备类型' + a
@@ -54,7 +54,7 @@ class BSAddTest(unittest.TestCase):
         self.browser.find_element_by_id('news').click()
         # 表单
         sleep(1)
-        self.browser.find_element_by_id('name').send_keys(BSAddTest.equipment_type)
+        self.browser.find_element_by_id('name').send_keys(BSEquipmentTypeBuild.equipment_type)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/form/div[2]/textarea').send_keys(u'设备类型test')
         # 确定
