@@ -57,7 +57,7 @@ class BSDepartBuild(unittest.TestCase):
         sleep(3)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav2-content/div[2]/div/form/div[1]/input').send_keys(
-            BSAddTest.depart)
+            BSDepartBuild.depart)
         # 部门类型
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav2-content/div[2]/div/form/div[2]/select').click()

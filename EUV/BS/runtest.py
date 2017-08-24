@@ -5,8 +5,12 @@ from email.mime.text import MIMEText
 from email.header import Header
 from email.mime.multipart import MIMEMultipart
 import os
+import sys
 import time
 from HTMLTestRunner import HTMLTestRunner
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 # 生成HTML文件
 test_dir = 'C:\\Users\\xuzhen\\PycharmProjects\\EUV-BS\\EUV\\BS'

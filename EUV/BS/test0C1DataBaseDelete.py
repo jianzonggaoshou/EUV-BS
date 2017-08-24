@@ -4,7 +4,7 @@ import MySQLdb
 
 
 class DataBaseTest(unittest.TestCase):
-    """数据库测试"""
+    """数据库删除用户和角色"""
 
     def setUp(self):
         print("test case1 start"),
