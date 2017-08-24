@@ -57,7 +57,7 @@ class BSEquipmentCancel(unittest.TestCase):
 
         # 选取设备item
         sleep(1)
-        self.browser.find_element_by_xpath('//*[@id="tree-root"]/ol/li/ol/li[4]/div/span').click()
+        self.browser.find_element_by_xpath('//*[@id="tree-root"]/ol/li/ol/li[1]/div/span').click()
         # 删除设备
         sleep(1)
         self.browser.find_element_by_xpath(
