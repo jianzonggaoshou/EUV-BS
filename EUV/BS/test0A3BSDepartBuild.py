@@ -9,14 +9,14 @@ class BSDepartBuild(unittest.TestCase):
     # 变量赋值
     a = 'test'
     depart = u'部门' + a
-    group = u'班组test' + a
+    group = u'班组' + a
 
     def setUp(self):
-        print("test3 case start"),
+        print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
         self.browser.maximize_window()
-        self.browser.get("http://172.16.40.5:8888/sitopeuv")
+        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         # self.browser.get("http://114.215.94.141:8060/sitopeuv")
         # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
@@ -31,7 +31,7 @@ class BSDepartBuild(unittest.TestCase):
         sleep(5)
 
     def tearDown(self):
-        print("test3 case end")
+        print("end")
         sleep(10)
         self.browser.quit()
 
@@ -67,7 +67,7 @@ class BSDepartBuild(unittest.TestCase):
         # 备注
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav2-content/div[2]/div/form/div[3]/textarea').send_keys(
-            u'部门test')
+            u'备注test')
         # 确定
         self.browser.find_element_by_xpath('//*[@id="footer"]/button[1]').click()
         # *******************************建立DOM树二级***********************************
@@ -91,10 +91,17 @@ class BSDepartBuild(unittest.TestCase):
         # 备注
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav2-content/div[2]/div/form/div[3]/textarea').send_keys(
-            u'班组test')
+            u'备注test')
         # 确定
         self.browser.find_element_by_xpath('//*[@id="footer"]/button[1]').click()
-        # # 截图
-        # sleep(3)
-        # now = time.strftime('%y-%m-%d-%H:%M:%S')
-        # self.browser.get_screenshot_as_file('/Users/xuzhen/PycharmProjects/QA2017/EUV/BS/image/组织部门管理%s.jpg' % now)
+
+        # 断言页面上新添加的元素是否和断言一致
+        sleep(3)
+        resultDepart = self.browser.find_element_by_xpath(
+            '//*[@id="box"]/div[1]/div/ol/li/ol/li[2]/div/span').text
+        resultTeam = self.browser.find_element_by_xpath('//*[@id="box"]/div[1]/div/ol/li/ol/li[2]/ol/li/div/span').text
+        print(resultDepart),
+        print(resultTeam),
+        sleep(1)
+        self.assertEqual(resultDepart, u'部门test', msg="添加的部门名与网页上显示的部门名不同！")
+        self.assertEqual(resultTeam, u'班组test', msg="添加的班组名与网页上显示的班组名不同！")

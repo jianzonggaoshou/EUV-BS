@@ -11,11 +11,11 @@ class BSPlanBuild(unittest.TestCase):
     plan = u'日计划测试' + a
 
     def setUp(self):
-        print("test7 case start"),
+        print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
         self.browser.maximize_window()
-        self.browser.get("http://172.16.40.5:8888/sitopeuv")
+        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         # self.browser.get("http://114.215.94.141:8060/sitopeuv")
         # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
@@ -30,7 +30,7 @@ class BSPlanBuild(unittest.TestCase):
         sleep(5)
 
     def tearDown(self):
-        print("test7 case end")
+        print("end"),
         sleep(10)
         self.browser.quit()
 
@@ -150,3 +150,11 @@ class BSPlanBuild(unittest.TestCase):
 
         # 提交
         self.browser.find_element_by_xpath('//*[@id="footer"]/button[1]').click()
+
+        # 断言页面上新添加的元素是否和断言一致
+        sleep(3)
+        resultPlan = self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/plan-table/div[1]/table/tbody/tr[4]/td[1]').text
+        print(resultPlan),
+        sleep(1)
+        self.assertEqual(resultPlan, u'日计划测试test	', msg="添加的检测项设备模板与网页上显示的不同！")

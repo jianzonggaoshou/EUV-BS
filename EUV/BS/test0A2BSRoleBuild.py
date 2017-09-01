@@ -11,11 +11,11 @@ class BSRoleBuild(unittest.TestCase):
     role = u'角色' + a
 
     def setUp(self):
-        print("test2 case start"),
+        print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
         self.browser.maximize_window()
-        self.browser.get("http://172.16.40.5:8888/sitopeuv")
+        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         # self.browser.get("http://114.215.94.141:8060/sitopeuv")
         # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
@@ -30,7 +30,7 @@ class BSRoleBuild(unittest.TestCase):
         sleep(5)
 
     def tearDown(self):
-        print("test2 case end")
+        print("end"),
         sleep(10)
         self.browser.quit()
 
@@ -56,6 +56,23 @@ class BSRoleBuild(unittest.TestCase):
         self.browser.find_element_by_id('name').send_keys(BSRoleBuild.role)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav3-content/div[2]/div/form/div[2]/textarea').send_keys(
-            u'test')
+            u'备注test')
         # 确定
         self.browser.find_element_by_id('new-save').click()
+        # 增加权限
+        sleep(1)
+        self.browser.find_elements_by_id("roleAuth")[8].click()
+        # 点击全选按钮
+        sleep(1)
+        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/nav3-content/div[5]/div/form/div/div[2]/input').click()
+        # 确定
+        sleep(1)
+        self.browser.find_element_by_id('jur-save').click()
+
+        # 断言页面上新添加的元素是否和断言一致
+        sleep(3)
+        result = self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/nav3-content/div[1]/table/tbody/tr[9]/td[1]').text
+        print(result),
+        sleep(1)
+        self.assertEqual(result, u'角色test', msg="添加的角色名与网页上显示的角色名不同！")

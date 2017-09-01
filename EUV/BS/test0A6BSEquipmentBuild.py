@@ -12,11 +12,11 @@ class BSEquipmentBuild(unittest.TestCase):
     transformer = u'变压器' + a
 
     def setUp(self):
-        print("test6 case start"),
+        print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
         self.browser.maximize_window()
-        self.browser.get("http://172.16.40.5:8888/sitopeuv")
+        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         # self.browser.get("http://114.215.94.141:8060/sitopeuv")
         # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
@@ -31,7 +31,7 @@ class BSEquipmentBuild(unittest.TestCase):
         sleep(5)
 
     def tearDown(self):
-        print("test6 case end")
+        print("end")
         sleep(10)
         self.browser.quit()
 
@@ -56,7 +56,10 @@ class BSEquipmentBuild(unittest.TestCase):
         self.browser.find_element_by_id('newRoom').click()
         sleep(1)
         self.browser.find_element_by_id('roomName').send_keys(BSEquipmentBuild.room)
-        self.browser.find_element_by_id('roomRemark').send_keys(u'配电室test')
+        self.browser.find_element_by_id('roomType').click()
+        sleep(1)
+        self.browser.find_element_by_xpath('//*[@id="roomType"]/option[2]').click()
+        self.browser.find_element_by_id('roomRemark').send_keys(u'备注test')
         # 确定
         self.browser.find_element_by_id('newR-save').click()
 
@@ -101,7 +104,26 @@ class BSEquipmentBuild(unittest.TestCase):
         self.browser.find_element_by_xpath('//*[@id="equipmentState"]/option[2]').click()
         # 备注
         sleep(1)
-        self.browser.find_element_by_id('equipmentRemark').send_keys(u'test备注')
+        self.browser.find_element_by_id('equipmentRemark').send_keys(u'备注test')
         # 确定
         sleep(1)
         self.browser.find_element_by_id('newE-save').click()
+
+        # 收缩左侧树
+        sleep(1)
+        self.browser.find_element_by_xpath('//*[@id="tree-root"]/ol/li/ol/li[1]/div/a/span').click()
+        sleep(1)
+        self.browser.find_element_by_xpath('//*[@id="tree-root"]/ol/li/ol/li[2]/div/a/span').click()
+        sleep(1)
+        self.browser.find_element_by_xpath('//*[@id="tree-root"]/ol/li/ol/li[3]/div/a/span').click()
+
+        # 断言页面上新添加的元素是否和断言一致
+        sleep(3)
+        resultRoom = self.browser.find_element_by_xpath(
+            '//*[@id="tree-root"]/ol/li/ol/li[4]/div/span').text
+        print(resultRoom),
+        resultTransformer = self.browser.find_element_by_xpath('//*[@id="tree-root"]/ol/li/ol/li[4]/ol/li/div/span').text
+        print(resultTransformer)
+        sleep(1)
+        self.assertEqual(resultRoom, u'配电室test', msg="添加的检测项设备模板与网页上显示的不同！")
+        self.assertEqual(resultTransformer, u'变压器test', msg="添加的检测项设备模板与网页上显示的不同！")

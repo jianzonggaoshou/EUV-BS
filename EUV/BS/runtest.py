@@ -13,8 +13,8 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 # 生成HTML文件
-test_dir = 'C:\\Users\\xuzhen\\PycharmProjects\\EUV-BS\\EUV\\BS'
-report_dir = 'C:\\Users\\xuzhen\\PycharmProjects\\EUV-BS\\EUV\\BS\\report'
+test_dir = 'Users\\xuzhen\\PycharmProjects\\EUV-BS\\EUV\\BS'
+report_dir = 'Users\\xuzhen\\PycharmProjects\\EUV-BS\\EUV\\BS\\report'
 discover = unittest.defaultTestLoader.discover(test_dir, pattern='test*.py')
 now = time.strftime("%Y-%m-%d %H_%M_%S")
 filename = report_dir + '/' + now + 'result.html'

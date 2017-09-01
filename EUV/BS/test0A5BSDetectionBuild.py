@@ -8,11 +8,11 @@ class BSDetectionBuild(unittest.TestCase):
     """BS端增加检测项"""
 
     def setUp(self):
-        print("test5 case start"),
+        print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
         self.browser.maximize_window()
-        self.browser.get("http://172.16.40.5:8888/sitopeuv")
+        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         # self.browser.get("http://114.215.94.141:8060/sitopeuv")
         # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
@@ -27,7 +27,7 @@ class BSDetectionBuild(unittest.TestCase):
         sleep(5)
 
     def tearDown(self):
-        print("test5 case end")
+        print("end"),
         sleep(10)
         self.browser.quit()
 
@@ -87,9 +87,9 @@ class BSDetectionBuild(unittest.TestCase):
             'kV')  # ********************巡检项管理新增******************
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[2]/div/div[2]/p[2]/input').send_keys(
-            '1')  # ********************巡检项管理新增******************
+            '10')  # ********************巡检项管理新增******************
         self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[2]/div/div[2]/p[3]/input').send_keys('10')
+            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[2]/div/div[2]/p[3]/input').send_keys('1')
         # 保存
         sleep(1)
         self.browser.find_element_by_id('all-sava1').click()
@@ -108,6 +108,20 @@ class BSDetectionBuild(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_id('all-sava1').click()
 
+        # 断言页面上新添加的元素是否和断言一致
+        sleep(3)
+        resultPic = self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/table/tbody/tr[1]/td[1]').text
+        print(resultPic),
+        resultQualitative = self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/table/tbody/tr[2]/td[1]').text
+        print(resultQualitative),
+        resultQuantify = self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/table/tbody/tr[3]/td[1]').text
+        print(resultQuantify),
+        sleep(1)
+        self.assertEqual(resultPic, u'检测项拍照test', msg="添加的检测项拍照与网页上显示的不同！")
+        self.assertEqual(resultQualitative, u'检测项定量test', msg="添加的检测项定量与网页上显示的不同！")
+        self.assertEqual(resultQuantify, u'检测项定性test', msg="添加的检测项定性与网页上显示的不同！")
+
         # ********************模板管理新增******************
         sleep(1)
         self.browser.find_element_by_xpath(
@@ -119,7 +133,7 @@ class BSDetectionBuild(unittest.TestCase):
         self.browser.find_element_by_id('name').send_keys(u'设备test模板')
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[4]/div/form/div[2]/textarea').send_keys(
-            u'test')
+            u'备注test')
         # 确定
         self.browser.find_element_by_id('sten-save').click()
 
@@ -140,3 +154,12 @@ class BSDetectionBuild(unittest.TestCase):
         sleep(2)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[5]/div/p[4]/button[1]').click()
+
+        # 断言页面上新添加的元素是否和断言一致
+        sleep(3)
+        result = self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[2]/table/tbody/tr/td[1]').text
+        print(result),
+        sleep(1)
+        self.assertEqual(result, u'设备test模板', msg="添加的检测项设备模板与网页上显示的不同！")
+
