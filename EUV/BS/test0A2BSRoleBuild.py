@@ -60,7 +60,7 @@ class BSRoleBuild(unittest.TestCase):
         # 确定
         self.browser.find_element_by_id('new-save').click()
         # 增加权限
-        sleep(1)
+        sleep(3)
         self.browser.find_elements_by_id("roleAuth")[8].click()
         # 点击全选按钮
         sleep(1)
