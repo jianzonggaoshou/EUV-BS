@@ -6,12 +6,13 @@ from time import sleep
 
 class BSEquipmentTypeCancel(unittest.TestCase):
     """BS端删除设备类型"""
+
     def setUp(self):
-        print("test5 case start"),
+        print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
         self.browser.maximize_window()
-        self.browser.get("http://172.16.40.5:8888/sitopeuv")
+        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         # self.browser.get("http://114.215.94.141:8060/sitopeuv")
         # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
@@ -26,7 +27,7 @@ class BSEquipmentTypeCancel(unittest.TestCase):
         sleep(5)
 
     def tearDown(self):
-        print("test5 case end")
+        print("end")
         sleep(10)
         self.browser.quit()
 
@@ -47,7 +48,12 @@ class BSEquipmentTypeCancel(unittest.TestCase):
         sleep(3)
         # 选择要删除的item
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[1]/table/tbody/tr[1]/td[3]/button[2]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[1]/table/tbody/tr[1]/td[3]/button[2]').click()
         # 确认删除弹出框
         sleep(1)
         self.browser.find_element_by_id('ensure').click()
+
+
+if __name__ == '__main__':
+    unittest.main()

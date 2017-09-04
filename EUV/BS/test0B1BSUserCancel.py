@@ -6,12 +6,13 @@ from time import sleep
 
 class BSUserCancel(unittest.TestCase):
     """BS端删除用户"""
+
     def setUp(self):
-        print("test1 case start"),
+        print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
         self.browser.maximize_window()
-        self.browser.get("http://172.16.40.5:8888/sitopeuv")
+        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         # self.browser.get("http://114.215.94.141:8060/sitopeuv")
         # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
@@ -26,7 +27,7 @@ class BSUserCancel(unittest.TestCase):
         sleep(5)
 
     def tearDown(self):
-        print("test1 case end")
+        print("end"),
         sleep(10)
         self.browser.quit()
 
@@ -51,3 +52,15 @@ class BSUserCancel(unittest.TestCase):
         # 确认弹窗
         sleep(1)
         self.browser.find_element_by_id('ensure').click()
+
+        # 断言页面上新添加的元素是否和断言一致
+        sleep(3)
+        result = self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[1]/table/tbody/tr[1]/td[1]').text
+        print(result),
+        sleep(1)
+        self.assertNotEqual(result, u'用户test', msg="删除的用户名未删除掉！")
+
+
+if __name__ == '__main__':
+    unittest.main()

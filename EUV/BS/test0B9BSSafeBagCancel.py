@@ -8,11 +8,11 @@ class BSSafeBagCancel(unittest.TestCase):
     """BS端删除安全包"""
 
     def setUp(self):
-        print("test9 case start"),
+        print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
         self.browser.maximize_window()
-        self.browser.get("http://172.16.40.5:8888/sitopeuv")
+        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         # self.browser.get("http://114.215.94.141:8060/sitopeuv")
         # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
@@ -27,7 +27,7 @@ class BSSafeBagCancel(unittest.TestCase):
         sleep(5)
 
     def tearDown(self):
-        print("test9 case end")
+        print("end"),
         sleep(10)
         self.browser.quit()
 
@@ -40,5 +40,10 @@ class BSSafeBagCancel(unittest.TestCase):
         sleep(1)
         # 删除第一个item
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[1]/table/tbody/tr[1]/td[3]/button[3]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[1]/table/tbody/tr[1]/td[3]/button[3]').click()
         sleep(1)
+
+
+if __name__ == '__main__':
+    unittest.main()

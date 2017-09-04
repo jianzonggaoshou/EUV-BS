@@ -6,12 +6,13 @@ from time import sleep
 
 class BSDetectionCancel(unittest.TestCase):
     """BS端删除检测项"""
+
     def setUp(self):
-        print("test4 case start"),
+        print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
         self.browser.maximize_window()
-        self.browser.get("http://172.16.40.5:8888/sitopeuv")
+        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         # self.browser.get("http://114.215.94.141:8060/sitopeuv")
         # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
@@ -26,7 +27,7 @@ class BSDetectionCancel(unittest.TestCase):
         sleep(5)
 
     def tearDown(self):
-        print("test4 case end")
+        print("end"),
         sleep(10)
         self.browser.quit()
 
@@ -58,7 +59,8 @@ class BSDetectionCancel(unittest.TestCase):
             '/html/body/div[1]/index-header/div/div[2]/div[2]/nav5-content/div[6]/div/div/div[3]/button[1]').click()
         # 点选模板管理
         sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/span[2]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/span[2]').click()
         # 删除第一个模板item
         sleep(1)
         self.browser.find_element_by_xpath(
@@ -67,3 +69,7 @@ class BSDetectionCancel(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div[1]/index-header/div/div[2]/div[2]/nav5-content/div[7]/div/div/div[3]/button[1]').click()
+
+
+if __name__ == '__main__':
+    unittest.main()

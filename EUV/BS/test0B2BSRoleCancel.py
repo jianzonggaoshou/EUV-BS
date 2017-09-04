@@ -7,11 +7,11 @@ from time import sleep
 class BSRoleCancel(unittest.TestCase):
     """BS端删除角色"""
     def setUp(self):
-        print("test2 case start"),
+        print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
         self.browser.maximize_window()
-        self.browser.get("http://172.16.40.5:8888/sitopeuv")
+        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         # self.browser.get("http://114.215.94.141:8060/sitopeuv")
         # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
@@ -26,7 +26,7 @@ class BSRoleCancel(unittest.TestCase):
         sleep(5)
 
     def tearDown(self):
-        print("test2 case end")
+        print("end"),
         sleep(10)
         self.browser.quit()
 
@@ -51,3 +51,8 @@ class BSRoleCancel(unittest.TestCase):
         # 确定删除弹出框
         sleep(1)
         self.browser.find_element_by_id('ensure').click()
+
+
+if __name__ == '__main__':
+    unittest.main()
+
