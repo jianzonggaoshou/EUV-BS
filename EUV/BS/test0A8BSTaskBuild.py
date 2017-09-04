@@ -68,10 +68,10 @@ class BSTaskBuild(unittest.TestCase):
         self.browser.find_element_by_id('startDateTime').click()
         sleep(1)
         self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr[1]/td[3]').click()
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr[5]/td[7]').click()
         sleep(1)
         self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr/td/span[2]').click()
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr/td/span[10]').click()
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr/td/span[1]').click()
@@ -81,10 +81,10 @@ class BSTaskBuild(unittest.TestCase):
         self.browser.find_element_by_id('endDateTime').click()
         sleep(1)
         self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr[1]/td[3]').click()
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr[5]/td[7]').click()
         sleep(1)
         self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr/td/span[2]').click()
+            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr/td/span[19]').click()
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr/td/span[1]').click()

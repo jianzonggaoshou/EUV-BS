@@ -74,7 +74,7 @@ class BSEquipmentBuild(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_id('equipmentTypeId').click()
         sleep(1)
-        self.browser.find_element_by_xpath('//*[@id="equipmentTypeId"]/option[5]').click()
+        self.browser.find_element_by_xpath('//*[@id="equipmentTypeId"]/option[2]').click()
         # 配电室
         sleep(1)
         self.browser.find_element_by_id('roomId').click()
