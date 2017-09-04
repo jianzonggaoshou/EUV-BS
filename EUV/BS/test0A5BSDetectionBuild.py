@@ -113,9 +113,11 @@ class BSDetectionBuild(unittest.TestCase):
         resultPic = self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/table/tbody/tr[1]/td[1]').text
         print(resultPic),
-        resultQualitative = self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/table/tbody/tr[2]/td[1]').text
+        resultQualitative = self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/table/tbody/tr[2]/td[1]').text
         print(resultQualitative),
-        resultQuantify = self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/table/tbody/tr[3]/td[1]').text
+        resultQuantify = self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/table/tbody/tr[3]/td[1]').text
         print(resultQuantify),
         sleep(1)
         self.assertEqual(resultPic, u'检测项拍照test', msg="添加的检测项拍照与网页上显示的不同！")
@@ -163,3 +165,6 @@ class BSDetectionBuild(unittest.TestCase):
         sleep(1)
         self.assertEqual(result, u'设备test模板', msg="添加的检测项设备模板与网页上显示的不同！")
 
+
+if __name__ == '__main__':
+    unittest.main()

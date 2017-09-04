@@ -76,3 +76,6 @@ class BSRoleBuild(unittest.TestCase):
         print(result),
         sleep(1)
         self.assertEqual(result, u'角色test', msg="添加的角色名与网页上显示的角色名不同！")
+
+if __name__ == '__main__':
+    unittest.main()

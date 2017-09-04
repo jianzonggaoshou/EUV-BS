@@ -92,7 +92,8 @@ class BSSafeBagBuild(unittest.TestCase):
 
         # 断言页面上新添加的元素是否和断言一致
         sleep(3)
-        self.browser.find_element_by_xpath('/html/body/div[1]/index-header/div/div[2]/div[1]/div/div[9]/div[1]/i').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div[1]/index-header/div/div[2]/div[1]/div/div[9]/div[1]/i').click()
         sleep(1)
         resultSafeBag = self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div[1]/table/tbody/tr/td[1]').text
@@ -101,3 +102,7 @@ class BSSafeBagBuild(unittest.TestCase):
         print(resultSafeBag),
         sleep(1)
         self.assertEqual(resultSafeBag, u'安全包test', msg="添加的安全包与网页上显示的不同！")
+
+
+if __name__ == '__main__':
+    unittest.main()

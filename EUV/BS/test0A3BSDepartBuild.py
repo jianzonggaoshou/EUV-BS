@@ -105,3 +105,7 @@ class BSDepartBuild(unittest.TestCase):
         sleep(1)
         self.assertEqual(resultDepart, u'部门test', msg="添加的部门名与网页上显示的部门名不同！")
         self.assertEqual(resultTeam, u'班组test', msg="添加的班组名与网页上显示的班组名不同！")
+
+
+if __name__ == '__main__':
+    unittest.main()

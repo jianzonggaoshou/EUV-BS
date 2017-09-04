@@ -67,3 +67,7 @@ class BSEquipmentTypeBuild(unittest.TestCase):
         print(result),
         sleep(1)
         self.assertEqual(result, u'设备类型test', msg="添加的设备类型与网页上显示的设备类型不同！")
+
+
+if __name__ == '__main__':
+    unittest.main()

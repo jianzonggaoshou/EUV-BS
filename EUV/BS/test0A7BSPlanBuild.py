@@ -160,3 +160,7 @@ class BSPlanBuild(unittest.TestCase):
         print(resultPlan),
         sleep(1)
         self.assertEqual(resultPlan, u'日计划测试test', msg="添加的日计划模板与网页上显示的不同！")
+
+
+if __name__ == '__main__':
+    unittest.main()

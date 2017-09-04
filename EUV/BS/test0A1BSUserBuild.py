@@ -67,7 +67,12 @@ class BSUserBuild(unittest.TestCase):
 
         # 断言页面上新添加的元素是否和断言一致
         sleep(3)
-        result = self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[1]/table/tbody/tr[1]/td[1]').text
+        result = self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[1]/table/tbody/tr[1]/td[1]').text
         print(result),
         sleep(1)
         self.assertEqual(result, u'用户test', msg="添加的用户名与网页上显示的用户名不同！")
+
+
+if __name__ == '__main__':
+    unittest.main()

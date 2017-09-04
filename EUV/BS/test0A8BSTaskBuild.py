@@ -116,3 +116,7 @@ class BSTaskBuild(unittest.TestCase):
         print(resultTask),
         sleep(1)
         self.assertEqual(resultTask, u'特检任务test', msg="添加的任务模板与网页上显示的不同！")
+
+
+if __name__ == '__main__':
+    unittest.main()
