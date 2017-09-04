@@ -14,8 +14,8 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 # 生成HTML文件
-test_dir = 'Users\\xuzhen\\PycharmProjects\\EUV-BS\\EUV\\BS'
-report_dir = 'Users\\xuzhen\\PycharmProjects\\EUV-BS\\EUV\\BS\\report'
+test_dir = 'C:\\Users\\xuzhen\\PycharmProjects\\EUV-BS\\EUV\\BS'
+report_dir = 'C:\\Users\\xuzhen\\PycharmProjects\\EUV-BS\\EUV\\BS\\report'
 discover = unittest.defaultTestLoader.discover(test_dir, pattern='test*.py')
 now = time.strftime("%Y-%m-%d %H_%M_%S")
 filename = report_dir + '/' + now + 'result.html'
@@ -36,11 +36,11 @@ print(file)
 smtpserver = 'smtp.si-top.com'
 
 # 发送邮箱用户/密码
-user = 'gaokun@si-top.com'
+user = 'xuzhen@si-top.com'
 password = '123Li456'
 
 # 发送邮箱
-sender = 'gaokun@si-top.com'
+sender = 'xuzhen@si-top.com'
 
 # # 接收邮箱
 # receiver = 'xuzhen@si-top.com'
@@ -50,7 +50,7 @@ receiver = 'gongyupeng@si-top.com, xuzhen@si-top.com, gaokun@si-top.com, biandon
 receiver = string.splitfields(receiver, ',')
 
 # 发送邮件主题
-subject = 'EUV AutoTest email'
+subject = 'EUV-BS AutoTest email'
 
 # 发送的附件
 sendFile = open(file, 'rb').read()
