@@ -11,11 +11,11 @@ class BSTaskBuild(unittest.TestCase):
     task = u'特检任务' + a
 
     def setUp(self):
-        print("test8 case start"),
+        print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
         self.browser.maximize_window()
-        self.browser.get("http://172.16.40.5:8888/sitopeuv")
+        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         # self.browser.get("http://114.215.94.141:8060/sitopeuv")
         # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
@@ -30,7 +30,7 @@ class BSTaskBuild(unittest.TestCase):
         sleep(5)
 
     def tearDown(self):
-        print("test8 case end")
+        print("end"),
         sleep(10)
         self.browser.quit()
 
@@ -106,3 +106,13 @@ class BSTaskBuild(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[5]/button[1]').click()
+
+        # 断言页面上新添加的元素是否和断言一致
+        sleep(3)
+        resultTask = self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[1]/table/tbody/tr[1]/td[1]').text
+        # 去除文件中含有的空格等符号
+        resultTask = resultTask.strip()
+        print(resultTask),
+        sleep(1)
+        self.assertEqual(resultTask, u'特检任务test', msg="添加的任务模板与网页上显示的不同！")

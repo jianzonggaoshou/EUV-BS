@@ -155,6 +155,8 @@ class BSPlanBuild(unittest.TestCase):
         sleep(3)
         resultPlan = self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/plan-table/div[1]/table/tbody/tr[4]/td[1]').text
+        # 去除文件中含有的空格等符号
+        resultPlan = resultPlan.strip()
         print(resultPlan),
         sleep(1)
-        self.assertEqual(resultPlan, u'日计划测试test	', msg="添加的检测项设备模板与网页上显示的不同！")
+        self.assertEqual(resultPlan, u'日计划测试test', msg="添加的日计划模板与网页上显示的不同！")

@@ -11,11 +11,11 @@ class BSSafeBagBuild(unittest.TestCase):
     safe_bag = u'安全包' + a
 
     def setUp(self):
-        print("test9 case start"),
+        print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
         self.browser.maximize_window()
-        self.browser.get("http://172.16.40.5:8888/sitopeuv")
+        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         # self.browser.get("http://114.215.94.141:8060/sitopeuv")
         # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
@@ -30,7 +30,7 @@ class BSSafeBagBuild(unittest.TestCase):
         sleep(5)
 
     def tearDown(self):
-        print("test9 case end")
+        print("end"),
         sleep(10)
         self.browser.quit()
 
@@ -89,3 +89,15 @@ class BSSafeBagBuild(unittest.TestCase):
         # 提交
         sleep(1)
         self.browser.find_element_by_xpath('//*[@id="footer"]/button[1]').click()
+
+        # 断言页面上新添加的元素是否和断言一致
+        sleep(3)
+        self.browser.find_element_by_xpath('/html/body/div[1]/index-header/div/div[2]/div[1]/div/div[9]/div[1]/i').click()
+        sleep(1)
+        resultSafeBag = self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/div[1]/table/tbody/tr/td[1]').text
+        # 去除文件中含有的空格等符号
+        resultSafeBag = resultSafeBag.strip()
+        print(resultSafeBag),
+        sleep(1)
+        self.assertEqual(resultSafeBag, u'安全包test', msg="添加的安全包与网页上显示的不同！")

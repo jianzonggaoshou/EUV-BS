@@ -125,5 +125,5 @@ class BSEquipmentBuild(unittest.TestCase):
         resultTransformer = self.browser.find_element_by_xpath('//*[@id="tree-root"]/ol/li/ol/li[4]/ol/li/div/span').text
         print(resultTransformer)
         sleep(1)
-        self.assertEqual(resultRoom, u'配电室test', msg="添加的检测项设备模板与网页上显示的不同！")
-        self.assertEqual(resultTransformer, u'变压器test', msg="添加的检测项设备模板与网页上显示的不同！")
+        self.assertEqual(resultRoom, u'配电室test', msg="添加的配电室与网页上显示的不同！")
+        self.assertEqual(resultTransformer, u'变压器test', msg="添加的设备与网页上显示的不同！")
