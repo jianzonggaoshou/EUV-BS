@@ -7,6 +7,7 @@ from email.mime.multipart import MIMEMultipart
 import os
 import sys
 import time
+import string
 from HTMLTestRunner import HTMLTestRunner
 
 reload(sys)
@@ -41,8 +42,12 @@ password = '123Li456'
 # 发送邮箱
 sender = 'gaokun@si-top.com'
 
-# 接收邮箱
-receiver = 'xuzhen@si-top.com'
+# # 接收邮箱
+# receiver = 'xuzhen@si-top.com'
+
+# 多人接收邮箱
+receiver = 'gongyupeng@si-top.com, xuzhen@si-top.com, gaokun@si-top.com, biandongfeng@si-top.com, kangrui@si-top.com, wanwentao@si-top.com'
+receiver = string.splitfields(receiver, ',')
 
 # 发送邮件主题
 subject = 'EUV AutoTest email'
