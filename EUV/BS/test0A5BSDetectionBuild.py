@@ -2,6 +2,10 @@
 import unittest
 from selenium import webdriver
 from time import sleep
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 
 class BSDetectionBuild(unittest.TestCase):
@@ -13,16 +17,14 @@ class BSDetectionBuild(unittest.TestCase):
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
         self.browser.maximize_window()
         self.browser.get("http://172.16.40.240:8888/sitopeuv")
-        # self.browser.get("http://114.215.94.141:8060/sitopeuv")
-        # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
         # 登录密码
         self.browser.find_element_by_id('userName').clear()
-        self.browser.find_element_by_id('userName').send_keys('biandongfeng')
+        self.browser.find_element_by_id('userName').send_keys('zhenzhen')
         self.browser.find_element_by_id('userPwd').clear()
-        self.browser.find_element_by_id('userPwd').send_keys('12345678')
+        self.browser.find_element_by_id('userPwd').send_keys('123456')
         # 登录
-        self.browser.find_element_by_xpath('/html/body/div/div[2]/div[2]/p[3]/input').click()
+        self.browser.find_element_by_xpath('//input[@value="登录"]').click()
         # 等待
         sleep(5)
 
@@ -40,9 +42,9 @@ class BSDetectionBuild(unittest.TestCase):
         js = "window.scrollTo(0, 500)"
         self.browser.execute_script(js)
         sleep(3)
-        sleep(1)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[1]/div/div[12]/div[1]/i').click()
         # 资源管理
+        sleep(1)
+        self.browser.find_element_by_xpath('//div[@expander-title="资源管理"]').click()
         sleep(2)
         self.browser.find_element_by_link_text('检测项管理').click()
         # 滚动翻页
@@ -51,13 +53,11 @@ class BSDetectionBuild(unittest.TestCase):
         sleep(3)
         # 新增
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/p/button').click()
+        self.browser.find_element_by_xpath('//button[@ng-click="preaddInspectionItem()"]').click()
         # 表单
         # ***********************定性*************************
         sleep(2)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[2]/div/p[2]/input').send_keys(u'检测项定性test')
+        self.browser.find_element_by_xpath('//input[@ng-model="inspectionItem.inspectionName"]').send_keys(u'检测项定性test')
         sleep(1)
         self.browser.find_element_by_xpath('//*[@id="one"]/span').click()
         self.browser.find_element_by_xpath('//*[@id="one"]/span').click()
@@ -75,21 +75,14 @@ class BSDetectionBuild(unittest.TestCase):
         # ***********************定量*************************
         # 新增
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/p/button').click()
-        sleep(2)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[2]/div/p[2]/input').send_keys(u'检测项定量test')
+        self.browser.find_element_by_xpath('//button[@ng-click="preaddInspectionItem()"]').click()
+        sleep(1)
+        self.browser.find_element_by_xpath('//input[@ng-model="inspectionItem.inspectionName"]').send_keys(u'检测项定量test')
         sleep(1)
         self.browser.find_element_by_xpath('//*[@id="elect"]/input[2]').click()
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[2]/div/div[2]/p[1]/input').send_keys(
-            'kV')  # ********************巡检项管理新增******************
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[2]/div/div[2]/p[2]/input').send_keys(
-            '10')  # ********************巡检项管理新增******************
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[2]/div/div[2]/p[3]/input').send_keys('1')
+        self.browser.find_element_by_xpath('//input[@ng-model="inspectionItem.quantityUnit"]').send_keys('kV')
+        self.browser.find_element_by_xpath('//input[@ng-model="inspectionItem.quantityUplimit"]').send_keys('10')
+        self.browser.find_element_by_xpath('//input[@ng-model="inspectionItem.quantityLowlimit"]').send_keys('1')
         # 保存
         sleep(1)
         self.browser.find_element_by_id('all-sava1').click()
@@ -97,11 +90,9 @@ class BSDetectionBuild(unittest.TestCase):
         # ********************拍照******************
         # 新增
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/p/button').click()
+        self.browser.find_element_by_xpath('//button[@ng-click="preaddInspectionItem()"]').click()
         sleep(2)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[2]/div/p[2]/input').send_keys(u'检测项拍照test')
+        self.browser.find_element_by_xpath('//input[@ng-model="inspectionItem.inspectionName"]').send_keys(u'检测项拍照test')
         sleep(1)
         self.browser.find_element_by_xpath('//*[@id="elect"]/input[3]').click()
         # 保存
@@ -110,14 +101,11 @@ class BSDetectionBuild(unittest.TestCase):
 
         # 断言页面上新添加的元素是否和断言一致
         sleep(3)
-        resultPic = self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/table/tbody/tr[1]/td[1]').text
+        resultPic = self.browser.find_elements_by_xpath('//td[@data-title-text="巡检项名称"]')[0].text
         print(resultPic),
-        resultQualitative = self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/table/tbody/tr[2]/td[1]').text
+        resultQualitative = self.browser.find_elements_by_xpath('//td[@data-title-text="巡检项名称"]')[1].text
         print(resultQualitative),
-        resultQuantify = self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[1]/div/div/div/table/tbody/tr[3]/td[1]').text
+        resultQuantify = self.browser.find_elements_by_xpath('//td[@data-title-text="巡检项名称"]')[2].text
         print(resultQuantify),
         sleep(1)
         self.assertEqual(resultPic, u'检测项拍照test', msg="添加的检测项拍照与网页上显示的不同！")
@@ -126,8 +114,9 @@ class BSDetectionBuild(unittest.TestCase):
 
         # ********************模板管理新增******************
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/span[2]').click()
+        self.browser.find_element_by_xpath('//span[@ng-click="getInspectionModelList()"]').click()
+        # self.browser.find_element_by_xpath(
+        # '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/span[2]').click()
         # 新增
         sleep(1)
         self.browser.find_element_by_id('sten-new').click()
@@ -144,23 +133,18 @@ class BSDetectionBuild(unittest.TestCase):
         self.browser.find_element_by_id('sten-amend').click()
         # 选择检测项
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[5]/div/div[1]/input').click()
+        self.browser.find_element_by_xpath('//div[@class="checkBox"]/div[1]/input').click()
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[5]/div/div[2]/input').click()
+        self.browser.find_element_by_xpath('//div[@class="checkBox"]/div[2]/input').click()
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[5]/div/div[3]/input').click()
+        self.browser.find_element_by_xpath('//div[@class="checkBox"]/div[3]/input').click()
         # 确定
         sleep(2)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[5]/div/p[4]/button[1]').click()
+        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[5]/div/p[2]/button[1]').click()
 
         # 断言页面上新添加的元素是否和断言一致
         sleep(3)
-        result = self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[1]/div[2]/table/tbody/tr/td[1]').text
+        result = self.browser.find_elements_by_xpath('//td[@data-title-text="模板名称"]')[0].text
         print(result),
         sleep(1)
         self.assertEqual(result, u'设备test模板', msg="添加的检测项设备模板与网页上显示的不同！")
