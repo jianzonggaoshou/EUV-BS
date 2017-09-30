@@ -16,10 +16,10 @@ class DataBaseTest(unittest.TestCase):
         """数据库删除用户和角色"""
         # 打开数据库连接
         conn = MySQLdb.connect(
-            host="172.16.40.250",
+            host="172.16.40.240",
             port=3306,
-            user="sito",
-            passwd="tianhuzuji@91.112",
+            user="root",
+            passwd="123456",
             db="yuv_test",
             charset="utf8")
 

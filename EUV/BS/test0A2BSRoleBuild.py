@@ -3,6 +3,7 @@ import unittest
 from selenium import webdriver
 from time import sleep
 import sys
+from public import Login
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -11,24 +12,15 @@ sys.setdefaultencoding('utf8')
 class BSRoleBuild(unittest.TestCase):
     """BS端增加角色"""
     # 变量赋值
-    a = 'test'
-    role = u'角色' + a
+    role = u'角色test'
+    remark = u'备注test'
 
     def setUp(self):
         print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
-        self.browser.maximize_window()
-        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         sleep(3)
-        # 登录密码
-        self.browser.find_element_by_id('userName').clear()
-        self.browser.find_element_by_id('userName').send_keys('zhenzhen')
-        self.browser.find_element_by_id('userPwd').clear()
-        self.browser.find_element_by_id('userPwd').send_keys('123456')
-        # 登录
-        self.browser.find_element_by_xpath('//input[@value="登录"]').click()
-        # 等待
+        Login.user_login(self.browser)
         sleep(5)
 
     def tearDown(self):
@@ -56,26 +48,27 @@ class BSRoleBuild(unittest.TestCase):
         # 表单
         sleep(1)
         self.browser.find_element_by_id('name').send_keys(BSRoleBuild.role)
-        self.browser.find_element_by_xpath('//textarea[@ng-model="addRole.roleRemark"]').send_keys(u'备注test')
+        self.browser.find_element_by_xpath('//textarea[@ng-model="addRole.roleRemark"]').send_keys(BSRoleBuild.remark)
         # 确定
         self.browser.find_element_by_id('new-save').click()
         # 增加权限
         sleep(3)
-        self.browser.find_elements_by_id("roleAuth")[8].click()
+        self.browser.find_elements_by_id("roleAuth")[4].click()
         # 点击全选按钮
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/nav3-content/div[5]/div/form/div/div[2]/input').click()
+        #self.browser.find_element_by_xpath(
+            #'/html/body/div/index-header/div/div[2]/div[2]/nav3-content/div[5]/div/form/div/div[2]/input').click()
+        self.browser.find_element_by_xpath('//*[text()="全选"]').click()
         # 确定
         sleep(1)
         self.browser.find_element_by_id('jur-save').click()
 
         # 断言页面上新添加的元素是否和断言一致
         sleep(3)
-        result = self.browser.find_elements_by_xpath('//td[@data-title-text="角色名称"]')[7].text
+        result = self.browser.find_elements_by_xpath('//td[@data-title-text="角色名称"]')[4].text
         print(result),
         sleep(1)
-        self.assertEqual(result, u'角色test', msg="添加的角色名与网页上显示的角色名不同！")
+        self.assertEqual(result, BSRoleBuild.role, msg="添加的角色名与网页上显示的角色名不同！")
 
 
 if __name__ == '__main__':

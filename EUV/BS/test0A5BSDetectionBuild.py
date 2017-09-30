@@ -3,6 +3,8 @@ import unittest
 from selenium import webdriver
 from time import sleep
 import sys
+from public import Login
+
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -10,22 +12,19 @@ sys.setdefaultencoding('utf8')
 
 class BSDetectionBuild(unittest.TestCase):
     """BS端增加检测项"""
+    # 变量赋值
+    qualitative = u'检测项定性test'
+    quantify = u'检测项定量test'
+    pic = u'检测项拍照test'
+    equipment_model = u'设备test模板'
+    remark = u'备注test'
 
     def setUp(self):
         print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
-        self.browser.maximize_window()
-        self.browser.get("http://172.16.40.240:8888/sitopeuv")
         sleep(3)
-        # 登录密码
-        self.browser.find_element_by_id('userName').clear()
-        self.browser.find_element_by_id('userName').send_keys('zhenzhen')
-        self.browser.find_element_by_id('userPwd').clear()
-        self.browser.find_element_by_id('userPwd').send_keys('123456')
-        # 登录
-        self.browser.find_element_by_xpath('//input[@value="登录"]').click()
-        # 等待
+        Login.user_login(self.browser)
         sleep(5)
 
     def tearDown(self):
@@ -57,7 +56,8 @@ class BSDetectionBuild(unittest.TestCase):
         # 表单
         # ***********************定性*************************
         sleep(2)
-        self.browser.find_element_by_xpath('//input[@ng-model="inspectionItem.inspectionName"]').send_keys(u'检测项定性test')
+        self.browser.find_element_by_xpath('//input[@ng-model="inspectionItem.inspectionName"]').send_keys(
+            BSDetectionBuild.qualitative)
         sleep(1)
         self.browser.find_element_by_xpath('//*[@id="one"]/span').click()
         self.browser.find_element_by_xpath('//*[@id="one"]/span').click()
@@ -77,7 +77,8 @@ class BSDetectionBuild(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_xpath('//button[@ng-click="preaddInspectionItem()"]').click()
         sleep(1)
-        self.browser.find_element_by_xpath('//input[@ng-model="inspectionItem.inspectionName"]').send_keys(u'检测项定量test')
+        self.browser.find_element_by_xpath('//input[@ng-model="inspectionItem.inspectionName"]').send_keys(
+            BSDetectionBuild.quantify)
         sleep(1)
         self.browser.find_element_by_xpath('//*[@id="elect"]/input[2]').click()
         self.browser.find_element_by_xpath('//input[@ng-model="inspectionItem.quantityUnit"]').send_keys('kV')
@@ -92,7 +93,8 @@ class BSDetectionBuild(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_xpath('//button[@ng-click="preaddInspectionItem()"]').click()
         sleep(2)
-        self.browser.find_element_by_xpath('//input[@ng-model="inspectionItem.inspectionName"]').send_keys(u'检测项拍照test')
+        self.browser.find_element_by_xpath('//input[@ng-model="inspectionItem.inspectionName"]').send_keys(
+            BSDetectionBuild.pic)
         sleep(1)
         self.browser.find_element_by_xpath('//*[@id="elect"]/input[3]').click()
         # 保存
@@ -108,9 +110,9 @@ class BSDetectionBuild(unittest.TestCase):
         resultQuantify = self.browser.find_elements_by_xpath('//td[@data-title-text="巡检项名称"]')[2].text
         print(resultQuantify),
         sleep(1)
-        self.assertEqual(resultPic, u'检测项拍照test', msg="添加的检测项拍照与网页上显示的不同！")
-        self.assertEqual(resultQualitative, u'检测项定量test', msg="添加的检测项定量与网页上显示的不同！")
-        self.assertEqual(resultQuantify, u'检测项定性test', msg="添加的检测项定性与网页上显示的不同！")
+        self.assertEqual(resultPic, BSDetectionBuild.pic, msg="添加的检测项拍照与网页上显示的不同！")
+        self.assertEqual(resultQualitative, BSDetectionBuild.quantify, msg="添加的检测项定量与网页上显示的不同！")
+        self.assertEqual(resultQuantify, BSDetectionBuild.qualitative, msg="添加的检测项定性与网页上显示的不同！")
 
         # ********************模板管理新增******************
         sleep(1)
@@ -121,10 +123,10 @@ class BSDetectionBuild(unittest.TestCase):
         sleep(1)
         self.browser.find_element_by_id('sten-new').click()
         # 表单
-        self.browser.find_element_by_id('name').send_keys(u'设备test模板')
+        self.browser.find_element_by_id('name').send_keys(BSDetectionBuild.equipment_model)
         self.browser.find_element_by_xpath(
             '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[4]/div/form/div[2]/textarea').send_keys(
-            u'备注test')
+            BSDetectionBuild.remark)
         # 确定
         self.browser.find_element_by_id('sten-save').click()
 
@@ -140,14 +142,15 @@ class BSDetectionBuild(unittest.TestCase):
         self.browser.find_element_by_xpath('//div[@class="checkBox"]/div[3]/input').click()
         # 确定
         sleep(2)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[5]/div/p[2]/button[1]').click()
+        self.browser.find_element_by_xpath(
+            '/html/body/div/index-header/div/div[2]/div[2]/nav5-content/div[5]/div/p[2]/button[1]').click()
 
         # 断言页面上新添加的元素是否和断言一致
         sleep(3)
         result = self.browser.find_elements_by_xpath('//td[@data-title-text="模板名称"]')[0].text
         print(result),
         sleep(1)
-        self.assertEqual(result, u'设备test模板', msg="添加的检测项设备模板与网页上显示的不同！")
+        self.assertEqual(result, BSDetectionBuild.equipment_model, msg="添加的检测项设备模板与网页上显示的不同！")
 
 
 if __name__ == '__main__':

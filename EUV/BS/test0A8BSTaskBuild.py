@@ -2,31 +2,28 @@
 import unittest
 from selenium import webdriver
 from time import sleep
+import sys
+from public import Login
+from test0A6BSEquipmentBuild import BSEquipmentBuild
+from test0A3BSDepartBuild import BSDepartBuild
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 
 class BSTaskBuild(unittest.TestCase):
     """BS端增加任务"""
     # 变量赋值
-    a = 'test'
-    task = u'特检任务' + a
+    task = u'特检任务test'
+    security_id = '//select[@ng-model="task.securityPackage.securityId"]/option[2]'
+    model_id = '//select[@ng-model="currentEquipment.inspectionModelId"]/option[2]'
 
     def setUp(self):
         print("start"),
         self.browser = webdriver.Chrome()
         # self.browser = webdriver.Chrome(executable_path='/Users/xuzhen/chromedriver')
-        self.browser.maximize_window()
-        self.browser.get("http://172.16.40.240:8888/sitopeuv")
-        # self.browser.get("http://114.215.94.141:8060/sitopeuv")
-        # self.browser.get("http://localhost:8080/sitopeuv/")
         sleep(3)
-        # 登录密码
-        self.browser.find_element_by_id('userName').clear()
-        self.browser.find_element_by_id('userName').send_keys('biandongfeng')
-        self.browser.find_element_by_id('userPwd').clear()
-        self.browser.find_element_by_id('userPwd').send_keys('12345678')
-        # 登录
-        self.browser.find_element_by_xpath('/html/body/div/div[2]/div[2]/p[3]/input').click()
-        # 等待
+        Login.user_login(self.browser)
         sleep(5)
 
     def tearDown(self):
@@ -37,85 +34,70 @@ class BSTaskBuild(unittest.TestCase):
     def test8_BSTaskBuild(self):
         """BS端增加任务"""
         # 任务管理
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[1]/div/div[7]/div[1]/i').click()
+        self.browser.find_element_by_xpath('//div[@expander-title="任务管理"]').click()
         sleep(1)
         # 新增
         sleep(2)
-        self.browser.find_element_by_xpath('/html/body/div/index-header/div/div[2]/div[2]/div[1]/p/button').click()
+        self.browser.find_element_by_xpath('//p[@class="titletop"]/button').click()
         # 表单
         sleep(1)
         # 任务名称
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[1]/input').send_keys(
-            BSTaskBuild.task)
+        self.browser.find_element_by_xpath('//input[@ng-model="task.taskName"]').send_keys(BSTaskBuild.task)
         # 执行班组
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[2]/div[1]/div/div/div/button').click()
+        self.browser.find_element_by_xpath('//div[@selected-model="task.executorDeptList"]/div/div/button').click()
         sleep(1)
-        self.browser.find_element_by_link_text('运行一班').click()
+        self.browser.find_element_by_link_text(BSDepartBuild.group).click()
         # 选择安全包
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/select').click()
+        self.browser.find_element_by_xpath('//select[@ng-model="task.securityPackage.securityId"]').click()
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[2]/div[2]/select/option[2]').click()
+        self.browser.find_element_by_xpath(BSTaskBuild.security_id).click()
 
         # 开始时间
         sleep(1)
         self.browser.find_element_by_id('startDateTime').click()
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr[5]/td[7]').click()
+        self.browser.find_element_by_xpath('//td[@class="day ng-binding ng-scope current"]').click()
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr/td/span[10]').click()
+        self.browser.find_element_by_xpath('//span[text()="9:00 AM"]').click()
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[1]/div/ul/div/table/tbody/tr/td/span[1]').click()
+        self.browser.find_element_by_xpath('//span[text()="9:00 AM"]').click()
 
         # 结束时间
         sleep(1)
         self.browser.find_element_by_id('endDateTime').click()
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr[5]/td[7]').click()
+        self.browser.find_element_by_xpath('//td[@class="day ng-binding ng-scope current"]').click()
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr/td/span[19]').click()
+        self.browser.find_element_by_xpath('//span[text()="9:00 PM"]').click()
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[3]/div[2]/div/ul/div/table/tbody/tr/td/span[1]').click()
+        self.browser.find_element_by_xpath('//span[text()="9:00 PM"]').click()
 
         # 选择设备
         sleep(1)
         self.browser.find_element_by_xpath('//*[@id="tree-root"]/ol/li/ol/li[1]/ol/li[1]/div/input').click()
         sleep(1)
-        self.browser.find_element_by_xpath('//*[@id="tree-root"]/ol/li/ol/li[1]/ol/li[1]/div/span').click()
+        self.browser.find_element_by_xpath('//span[@title="%s"]' % BSEquipmentBuild.transformer).click()
         # 选择模板
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[4]/div[2]/span/select').click()
+        self.browser.find_element_by_xpath('//select[@ng-model="currentEquipment.inspectionModelId"]').click()
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[4]/div[2]/span/select/option[2]').click()
+        self.browser.find_element_by_xpath(BSTaskBuild.model_id).click()
 
         # 提交
         sleep(1)
-        self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[2]/div/div[5]/button[1]').click()
+        self.browser.find_element_by_xpath('//*[@id="footer"]/button[1]').click()
 
         # 断言页面上新添加的元素是否和断言一致
         sleep(3)
-        resultTask = self.browser.find_element_by_xpath(
-            '/html/body/div/index-header/div/div[2]/div[2]/div[1]/table/tbody/tr[1]/td[1]').text
+        resultTask = self.browser.find_elements_by_xpath('//td[@data-title-text="巡检任务名称"]')[0].text
         # 去除文件中含有的空格等符号
         resultTask = resultTask.strip()
         print(resultTask),
         sleep(1)
-        self.assertEqual(resultTask, u'特检任务test', msg="添加的任务模板与网页上显示的不同！")
+        self.assertEqual(resultTask, BSTaskBuild.task, msg="添加的任务模板与网页上显示的不同！")
 
 
 if __name__ == '__main__':
