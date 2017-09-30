@@ -4,8 +4,8 @@ from selenium import webdriver
 from time import sleep
 import sys
 from public import Login
-from test0A6BSEquipmentBuild import BSEquipmentBuild
-from test0A3BSDepartBuild import BSDepartBuild
+from test1FBSEquipmentBuild import BSEquipmentBuild
+from test1CBSDepartBuild import BSDepartBuild
 
 reload(sys)
 sys.setdefaultencoding('utf8')
