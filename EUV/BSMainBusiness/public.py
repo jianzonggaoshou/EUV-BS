@@ -4,9 +4,6 @@ class Login:
     company = 'sun公司'
 
     # 登录
-    def __init__(self):
-        pass
-
     @staticmethod
     def user_login(browser):
         # 登录密码
