@@ -2,12 +2,7 @@
 import unittest
 from selenium import webdriver
 from time import sleep
-import sys
 from public import Login
-
-
-reload(sys)
-sys.setdefaultencoding('utf8')
 
 
 class BSUserBuild(unittest.TestCase):
