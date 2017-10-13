@@ -81,23 +81,21 @@ class MainBusiness(unittest.TestCase):
             self.browser.find_element_by_xpath('//input[@placeholder="请输入用户名"]').send_keys(data[0])
             self.browser.find_element_by_xpath('//input[@placeholder="请输入真实姓名"]').send_keys(data[1])
             self.browser.find_element_by_xpath('//input[@placeholder="请输入密码"]').send_keys(data[2])
-            self.browser.find_element_by_xpath('//input[@placeholder="请输入确认密码"]').send_keys(
-                data[3])
+            self.browser.find_element_by_xpath('//input[@placeholder="请输入确认密码"]').send_keys(data[3])
             self.browser.find_elements_by_id('tel')[0].send_keys(data[4])
             self.browser.find_elements_by_id('tel')[1].send_keys(data[5])
-
             self.browser.find_element_by_xpath('//button[@ng-class="settings.buttonClasses"]').click()
             self.browser.find_element_by_link_text(data[6]).click()
             self.browser.find_element_by_xpath('//button[@ng-class="settings.buttonClasses"]').click()
             self.browser.find_element_by_id('new-save').click()
 
-        # 断言页面上新添加的元素是否和断言一致
-        i = 0
-        for data in user_list:
+            # 断言页面上新添加的元素是否和断言一致
             sleep(3)
-            result = self.browser.find_elements_by_xpath('//td[@data-title-text="用户名"]')[i].text
-            i = i + 1
+            result = self.browser.find_elements_by_xpath('//td[@data-title-text="用户名"]')[0].text
             print(result),
+            print(type(result)),
+            print(data[0]),
+            print(type(data[0])),
             sleep(1)
             self.assertEqual(result, data[0], msg="添加的角色名与网页上显示的角色名不同！")
 
