@@ -29,10 +29,10 @@ class DataBaseTest(unittest.TestCase):
 
         # 删除用户中以xuzhen开头的数据
         cursor.execute("DELETE FROM st_sa_user WHERE user_name LIKE 'test%';")
-        # 删除用户中以15609101234开头的数据
-        cursor.execute("DELETE FROM st_sa_user WHERE user_name LIKE '1561234%';")
-        # 删除角色中以角色开头的数据
-        cursor.execute("delete from st_sa_role WHERE role_name LIKE '角色%';")
+        # # 删除用户中以15609101234开头的数据
+        # cursor.execute("DELETE FROM st_sa_user WHERE user_name LIKE '1561234%';")
+        # # 删除角色中以角色开头的数据
+        # cursor.execute("delete from st_sa_role WHERE role_name LIKE '角色%';")
 
         cursor.close()
         conn.commit()

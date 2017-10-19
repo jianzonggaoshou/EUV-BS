@@ -1,0 +1,4 @@
+1#开关柜,//*[@id="equipmentTypeId"]/option[2],//select[@id="voltageLevel"]/option[2],设备位号number1,设备编号number1,出厂编号number1,生产厂商number1,供应厂商number1,//*[@id="workingState"]/option[10],//*[@id="equipmentState"]/option[2],备注test
+2#开关柜,//*[@id="equipmentTypeId"]/option[2],//select[@id="voltageLevel"]/option[2],设备位号number2,设备编号number2,出厂编号number2,生产厂商number2,供应厂商number2,//*[@id="workingState"]/option[10],//*[@id="equipmentState"]/option[2],备注test
+1#主变压器,//*[@id="equipmentTypeId"]/option[3],//select[@id="voltageLevel"]/option[2],设备位号number3,设备编号number3,出厂编号number3,生产厂商number3,供应厂商number3,//*[@id="workingState"]/option[10],//*[@id="equipmentState"]/option[2],备注test
+2#主变压器,//*[@id="equipmentTypeId"]/option[3],//select[@id="voltageLevel"]/option[2],设备位号number4,设备编号number4,出厂编号number4,生产厂商number4,供应厂商number4,//*[@id="workingState"]/option[10],//*[@id="equipmentState"]/option[2],备注test
